@@ -1,4 +1,3 @@
-
 {
   "name": "html2pptx",
   "version": "1.0.0",
@@ -20,9 +19,10 @@
   "author": "Your Name",
   "license": "MIT",
   "dependencies": {
+    "adm-zip": "^0.5.16",
     "cheerio": "^1.0.0-rc.12",
-    "pptxgenjs": "^3.12.0",
-    "css": "^3.0.0"
+    "css": "^3.0.0",
+    "pptxgenjs": "^3.12.0"
   },
   "engines": {
     "node": ">=14.0.0"
