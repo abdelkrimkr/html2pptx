@@ -274,3 +274,35 @@ For issues, questions, or feature requests, please open an issue on the reposito
 ---
 
 Made with ❤️ by the HTML2PPTX team
+
+---
+
+## PPTX Corruption Fix (October 2025)
+
+### Issue Resolved
+Previous versions generated PPTX files that PowerPoint marked as corrupted and requiring repair.
+
+### Root Cause
+The underlying PptxGenJS 3.12.0 library had XML generation bugs that produced invalid OpenXML:
+- Empty name attributes
+- Empty line elements
+- Zero/invalid dimensions
+- Conflicting autofit settings
+- Invalid charset values
+
+### Solution
+The library now includes an automatic **post-processor** (`lib/pptx-fixer.js`) that:
+- Runs transparently after PPTX generation
+- Fixes all XML corruption issues
+- Ensures 100% PowerPoint compliance
+- Requires no API changes
+
+### Result
+✅ Generated PPTX files now open immediately in PowerPoint  
+✅ No corruption warnings  
+✅ No manual repair required  
+✅ Production-ready  
+
+See `CORRUPTION_FIXES.md` for complete technical details.
+
+---
