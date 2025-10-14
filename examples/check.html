@@ -1,0 +1,178 @@
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>The CAP Triangle &amp; Database Classifications</title>
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&amp;family=Montserrat:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet"/>
+<style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+            font-family: 'Roboto', sans-serif;
+        }
+        .slide-container {
+            width: 1280px;
+            min-height: 720px;
+            overflow: hidden;
+            position: relative;
+            background-color: #ffffff;
+        }
+        .title {
+            font-family: 'Montserrat', sans-serif;
+            color: #1a365d;
+        }
+        .side-accent {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 8px;
+            height: 100%;
+            background-color: #3182ce;
+        }
+        .cap-triangle {
+            position: relative;
+            width: 400px;
+            height: 350px;
+        }
+        .triangle-point {
+            position: absolute;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #e6f0ff;
+            border: 2px solid #3182ce;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            color: #1a365d;
+        }
+        .triangle-label {
+            position: absolute;
+            font-family: 'Roboto', sans-serif;
+            font-size: 14px;
+            color: #4a5568;
+            font-weight: 500;
+        }
+        .db-box {
+            border: 1px solid #bee3f8;
+            border-radius: 8px;
+            padding: 12px;
+            margin-bottom: 16px;
+            background-color: #ebf4ff;
+        }
+        .db-type {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            color: #2b6cb0;
+            font-size: 18px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+        }
+        .db-marker {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            margin-right: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: white;
+        }
+        li {
+            margin-bottom: 8px;
+        }
+    </style>
+</head>
+<body>
+<div class="slide-container flex flex-col">
+<div class="side-accent"></div>
+<div class="pt-12 px-16 pb-4">
+<h1 class="title text-3xl font-bold mb-2">The CAP Triangle &amp; Database Classifications</h1>
+<div class="w-20 h-1 bg-blue-500"></div>
+</div>
+<div class="px-16 py-4 flex flex-grow">
+<div class="w-1/2">
+<div class="cap-triangle mx-auto">
+<!-- Triangle points -->
+<div class="triangle-point" style="top: 0; left: 165px;">C</div>
+<div class="triangle-point" style="bottom: 0; left: 40px;">A</div>
+<div class="triangle-point" style="bottom: 0; right: 40px;">P</div>
+<!-- Labels -->
+<div class="triangle-label" style="top: 20px; left: 250px;">Consistency</div>
+<div class="triangle-label" style="bottom: 15px; left: 5px;">Availability</div>
+<div class="triangle-label" style="bottom: 15px; right: 5px;">Partition Tolerance</div>
+<!-- Lines -->
+<svg height="350" style="position: absolute; top: 0; left: 0;" width="400">
+<line style="stroke:#3182ce; stroke-width:2" x1="200" x2="75" y1="35" y2="280"></line>
+<line style="stroke:#3182ce; stroke-width:2" x1="200" x2="325" y1="35" y2="280"></line>
+<line style="stroke:#3182ce; stroke-width:2" x1="75" x2="325" y1="280" y2="280"></line>
+<!-- Database regions -->
+<text fill="#1a365d" style="font-family: Montserrat; font-size: 24px; font-weight: 700;" x="135" y="145">CA</text>
+<text fill="#1a365d" style="font-family: Montserrat; font-size: 24px; font-weight: 700;" x="265" y="145">CP</text>
+<text fill="#1a365d" style="font-family: Montserrat; font-size: 24px; font-weight: 700;" x="200" y="250">AP</text>
+</svg>
+</div>
+<div class="mt-6 text-center">
+<p class="text-gray-700 italic">"In the presence of a network partition, a distributed system must choose between consistency and availability."</p>
+<p class="text-sm text-gray-600">— CAP Theorem</p>
+</div>
+</div>
+<div class="w-1/2 pl-12">
+<div class="db-box">
+<div class="db-type">
+<div class="db-marker" style="background-color: #4299e1;">CA</div>
+CA Databases (Consistency + Availability)
+</div>
+<ul class="list-disc pl-6 text-gray-700">
+<li><span class="font-semibold">Examples:</span> Traditional RDBMS (PostgreSQL, MySQL, Oracle)</li>
+<li>Transaction safety with ACID properties</li>
+<li>Only works when network partitions don't occur</li>
+<li><span class="font-semibold text-red-500">Limitation:</span> Not truly distributed; sacrifices partition tolerance</li>
+</ul>
+</div>
+<div class="db-box">
+<div class="db-type">
+<div class="db-marker" style="background-color: #48bb78;">CP</div>
+CP Databases (Consistency + Partition Tolerance)
+</div>
+<ul class="list-disc pl-6 text-gray-700">
+<li><span class="font-semibold">Examples:</span> MongoDB, HBase, Google BigTable, Redis</li>
+<li>Strong consistency even during network partitions</li>
+<li>Will refuse writes to maintain data integrity</li>
+<li><span class="font-semibold text-red-500">Trade-off:</span> May become unavailable during partitions</li>
+</ul>
+</div>
+<div class="db-box">
+<div class="db-type">
+<div class="db-marker" style="background-color: #ed8936;">AP</div>
+AP Databases (Availability + Partition Tolerance)
+</div>
+<ul class="list-disc pl-6 text-gray-700">
+<li><span class="font-semibold">Examples:</span> Cassandra, DynamoDB, CouchDB</li>
+<li>Always available for reads and writes, even during partitions</li>
+<li>Uses eventual consistency model</li>
+<li><span class="font-semibold text-red-500">Trade-off:</span> May return stale or conflicting data</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="px-16 pb-8">
+<div class="border-t border-gray-300 pt-4 flex justify-between items-center">
+<div class="text-sm text-gray-500">
+<span class="text-blue-700 font-semibold">CAP Theorem in Databases</span> • October 9, 2025
+</div>
+<div class="text-sm text-gray-500">
+<i class="fas fa-info-circle text-blue-500 mr-2"></i> Network partitions are inevitable in distributed systems, forcing the CP or AP choice
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

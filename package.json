@@ -1,0 +1,30 @@
+
+{
+  "name": "html2pptx",
+  "version": "1.0.0",
+  "description": "Convert HTML files to PowerPoint presentations automatically",
+  "main": "lib/html2pptx.js",
+  "bin": {
+    "html2pptx": "./bin/html2pptx"
+  },
+  "scripts": {
+    "test": "node test/test.js"
+  },
+  "keywords": [
+    "html",
+    "powerpoint",
+    "pptx",
+    "converter",
+    "presentation"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.12",
+    "pptxgenjs": "^3.12.0",
+    "css": "^3.0.0"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}

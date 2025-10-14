@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5 Text Boxes - 16:9</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #f0f0f0;
+            padding: 20px;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1280px;
+            aspect-ratio: 16 / 9;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .text-box {
+            flex: 1;
+            border: 2px solid #3498db;
+            border-radius: 8px;
+            padding: 20px;
+            background: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-family: Arial, sans-serif;
+            color: #2c3e50;
+        }
+        
+        .text-box:nth-child(1) { border-color: #e74c3c; }
+        .text-box:nth-child(2) { border-color: #3498db; }
+        .text-box:nth-child(3) { border-color: #2ecc71; }
+        .text-box:nth-child(4) { border-color: #f39c12; }
+        .text-box:nth-child(5) { border-color: #9b59b6; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="text-box">Text Box 1</div>
+        <div class="text-box">Text Box 2</div>
+        <div class="text-box">Text Box 3</div>
+        <div class="text-box">Text Box 4</div>
+        <div class="text-box">Text Box 5</div>
+    </div>
+</body>
+</html>
