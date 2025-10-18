@@ -15,8 +15,10 @@ A powerful Node.js library and command-line tool that automatically converts HTM
 - **Positioned Elements**: Handles absolute, relative, and flex-based positioning (including flexbox columns with gaps!)
 - **Images**: Converts HTML images to PowerPoint images
 - **SVG Support**: Converts SVG shapes, lines, and text to PowerPoint elements
-- **Complex Layouts**: Supports multi-column layouts, nested elements, and diagrams
+- **Complex Layouts**: Supports multi-column, flexbox, and grid layouts
 - **CSS Styling**: Extracts and applies inline styles, style tags, and class-based styles
+- **CSS Transforms**: Supports `rotate()` transforms on elements
+- **Hyperlinks**: Converts `<a>` tags with `href` attributes to clickable links
 - **Borders & Backgrounds**: Preserves border colors, widths, and background colors
 - **No Configuration**: Works out-of-the-box with sensible defaults
 - **Corruption-Free**: Automatic post-processing ensures valid PPTX files
@@ -102,6 +104,7 @@ converter.convert('input.html', 'output.pptx')
 - `<div>`, `<p>`, `<span>` → Text boxes
 - `<h1>` - `<h6>` → Styled text boxes
 - `<li>`, `<ul>`, `<ol>` → Formatted text
+- `<a>` → Text boxes with hyperlinks
 
 ### Visual Elements
 - `<img>` → PowerPoint images
@@ -146,7 +149,11 @@ converter.convert('input.html', 'output.pptx')
 
 ### Display
 - `display: flex` - Flexbox layout
+- `display: grid` - Grid layout
 - `flex-direction` - Layout direction
+
+### Transforms
+- `transform: rotate(…)` - Rotates elements
 
 ## 🎯 How It Works
 
