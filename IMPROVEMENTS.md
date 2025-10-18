@@ -242,16 +242,30 @@ The library was tested on:
 
 ---
 
+## Recent Additions (October 18, 2025)
+
+### 1. **CSS Grid Layout Support**
+- The library now supports `display: grid`, allowing for more complex and flexible layouts.
+- The new `calculateGridPosition` method parses `grid-template-columns`, `grid-template-rows`, and `gap` to accurately position elements.
+
+### 2. **CSS Transform: Rotate**
+- Added support for `transform: rotate()`, allowing elements to be rotated in the generated PowerPoint presentation.
+- The `parseTextOptions` method now extracts the rotation angle and applies it to the element.
+
+### 3. **Hyperlink Support**
+- The library now converts `<a>` tags with `href` attributes into clickable hyperlinks in the PowerPoint presentation.
+
+---
+
 ## Future Improvements
 
-While these fixes significantly improve the library, potential future enhancements include:
+While these fixes and new features significantly improve the library, potential future enhancements include:
 
-1. **Grid Layout Support**: Add support for CSS Grid layouts
-2. **Nested Flexbox**: Better handling of nested flex containers
-3. **Responsive Units**: Better handling of %, em, rem units with context awareness
-4. **Transform Properties**: Support for CSS transforms (rotate, scale, etc.)
-5. **More Pseudo-selectors**: Support for `:hover`, `:first-child`, `:last-child`, etc.
-6. **Advanced Border Styles**: Support for different border styles (dashed, dotted, etc.)
+1. **Nested Flexbox and Grid Layouts**: Better handling of nested flex and grid containers.
+2. **Responsive Units**: More robust handling of %, em, and rem units with context awareness.
+3. **More Transform Properties**: Support for other CSS transforms like `scale`, `skew`, and `translate`.
+4. **More Pseudo-selectors**: Support for additional pseudo-selectors like `:hover`, `:first-child`, and `:last-child`.
+5. **Advanced Border Styles**: Support for different border styles, such as `dashed` and `dotted`.
 
 ---
 
