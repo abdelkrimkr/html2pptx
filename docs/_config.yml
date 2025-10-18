@@ -1,0 +1,3 @@
+theme: jekyll-theme-minimal
+title: html2pptx
+description: A powerful Node.js library and command-line tool that automatically converts HTML files to PowerPoint presentations.
