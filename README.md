@@ -14,6 +14,24 @@ A powerful Node.js library and command-line tool that automatically converts HTM
 - **Comprehensive Styling**: Preserves text styling (color, font, size), borders, and backgrounds.
 - **SVG Support**: Converts SVG shapes, lines, and text to native PowerPoint elements.
 - **Corruption-Free**: Includes an automatic post-processor to fix common PPTX corruption issues.
+**✅ Flexbox Column Layout Support** - Fixed critical issue where only one element was rendering in flexbox column layouts. All elements now render correctly with proper spacing! See [FLEXBOX_FIX.md](./FLEXBOX_FIX.md) for details.
+
+**✅ PPTX Corruption Fixes** - Post-processing removes all corruption issues from generated files. See [CORRUPTION_FIXES.md](./CORRUPTION_FIXES.md) for details.
+
+## 🌟 Features
+
+- **Automatic Conversion**: Convert any HTML file to PowerPoint with a single command
+- **Text Boxes**: Preserves text content with styling (colors, fonts, sizes, alignment)
+- **Positioned Elements**: Handles absolute, relative, and flex-based positioning (including flexbox columns with gaps!)
+- **Images**: Converts HTML images to PowerPoint images
+- **SVG Support**: Converts SVG shapes, lines, and text to PowerPoint elements
+- **Complex Layouts**: Supports multi-column, flexbox, and grid layouts
+- **CSS Styling**: Extracts and applies inline styles, style tags, and class-based styles
+- **CSS Transforms**: Supports `rotate()` transforms on elements
+- **Hyperlinks**: Converts `<a>` tags with `href` attributes to clickable links
+- **Borders & Backgrounds**: Preserves border colors, widths, and background colors
+- **No Configuration**: Works out-of-the-box with sensible defaults
+- **Corruption-Free**: Automatic post-processing ensures valid PPTX files
 
 ## 📦 Installation
 
