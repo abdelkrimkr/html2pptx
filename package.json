@@ -7,8 +7,7 @@
     "html2pptx": "./bin/html2pptx"
   },
   "scripts": {
-    "start": "node lib/html2pptx.js",
-    "test": "mocha test/golden-master.test.js"
+    "test": "node test/test.js"
   },
   "keywords": [
     "html",
@@ -23,13 +22,7 @@
     "adm-zip": "^0.5.16",
     "cheerio": "^1.0.0-rc.12",
     "css": "^3.0.0",
-    "pptxgenjs": "^3.12.0",
-    "puppeteer": "^24.25.0"
-  },
-  "devDependencies": {
-    "assert": "^2.0.0",
-    "mocha": "^10.2.0",
-    "xml2js": "^0.6.2"
+    "pptxgenjs": "^3.12.0"
   },
   "engines": {
     "node": ">=14.0.0"
