@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced HTML for PPTX Conversion</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            background-color: #f0f0f0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        .header {
+            width: 100%;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .header h1 {
+            font-size: 48px;
+            color: #333;
+            transform: rotate(-5deg);
+        }
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            width: 100%;
+        }
+        .grid-item {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .grid-item h2 {
+            font-size: 24px;
+            color: #007bff;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+        }
+        .grid-item p {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+        .scaled-item {
+            transform: scale(0.9);
+            transition: transform 0.3s;
+        }
+        .scaled-item:hover {
+            transform: scale(1);
+        }
+        .footer {
+            margin-top: 20px;
+            width: 100%;
+            text-align: center;
+        }
+        .footer a {
+            color: #007bff;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="slide-container">
+        <div class="header">
+            <h1>Advanced Layout Test</h1>
+        </div>
+        <div class="main-content">
+            <div class="grid-item">
+                <h2>CSS Grid Layout</h2>
+                <p>This section demonstrates the use of CSS Grid to create a two-column layout. The grid container has a gap between the columns.</p>
+            </div>
+            <div class="grid-item scaled-item">
+                <h2>CSS Transforms</h2>
+                <p>This section has a 'transform: scale(0.9)' applied, and the header above has a 'transform: rotate(-5deg)'.</p>
+            </div>
+        </div>
+        <div class="footer">
+            <p>For more information, visit our <a href="https://www.example.com">website</a>.</p>
+        </div>
+    </div>
+</body>
+</html>
