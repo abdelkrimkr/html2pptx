@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 const { convertHTML2PPTX } = require('../lib/html2pptx');
+const { validatePath } = require('../lib/security-utils');
 const fs = require('fs');
 const path = require('path');
 
@@ -100,6 +101,15 @@ async function main() {
     const inputPath = path.resolve(args[0]);
     const outputPath = path.resolve(args[1]);
     
+    // Security validation
+    try {
+        validatePath(inputPath);
+        validatePath(outputPath);
+    } catch (e) {
+        console.error(`❌ Security Error: ${e.message}`);
+        process.exit(1);
+    }
+
     // Validate paths
     validateInputFile(inputPath);
     validateOutputPath(outputPath);
