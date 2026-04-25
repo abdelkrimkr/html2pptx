@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .container {
+            width: 1280px;
+            height: 720px;
+            background: #ffffff;
+            font-family: Arial, sans-serif;
+            padding: 40px;
+        }
+        .header {
+            font-size: 36px;
+            font-weight: bold;
+            color: #333333;
+            letter-spacing: 4px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .intro {
+            font-size: 18px;
+            color: #555555;
+            line-height: 28px;
+            margin-bottom: 30px;
+        }
+        .list-container {
+            display: flex;
+            justify-content: space-between;
+        }
+        .bullet-list {
+            width: 45%;
+            font-size: 18px;
+            line-height: 36px; /* Testing line-height on lists to verify paraSpaceAfter */
+            color: #2c3e50;
+        }
+        .numbered-list {
+            width: 45%;
+            font-size: 18px;
+            line-height: 36px;
+            color: #8e44ad;
+        }
+        .image-box {
+            margin-top: 40px;
+            text-align: center;
+        }
+        .sample-img {
+            width: 300px;
+            height: 150px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">FEATURE SHOWCASE</div>
+
+        <p class="intro">
+            This slide tests multiple specific properties including character spacing on the title,
+            strict line height parsing, and properly formatted native lists instead of simulated ones.
+        </p>
+
+        <div class="list-container">
+            <ul class="bullet-list">
+                <li>Native Unordered List Item 1</li>
+                <li>Properly mapped bullet</li>
+                <li>Spacing override via paraSpaceAfter</li>
+            </ul>
+
+            <ol class="numbered-list">
+                <li>First Indexed Step</li>
+                <li>Numbered native list</li>
+                <li>Maintains vertical alignment</li>
+            </ol>
+        </div>
+
+        <div class="image-box">
+            <!-- Replacing network-dependent image with a data URI to prevent ECONNRESET in tests -->
+            <img class="sample-img" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8BQDwAEhQGAhKmMIQAAAABJRU5ErkJggg==" alt="Placeholder">
+        </div>
+    </div>
+</body>
+</html>

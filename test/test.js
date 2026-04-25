@@ -31,6 +31,11 @@ async function runTests() {
             name: 'Test 4: Grid Layout (grid_layout.html)',
             input: path.join(__dirname, '../examples/grid_layout.html'),
             output: path.join(outputDir, 'test4-grid.pptx')
+        },
+        {
+            name: 'Test 5: Features Showcase (test-features.html)',
+            input: path.join(__dirname, 'test-features.html'),
+            output: path.join(outputDir, 'test5-features.pptx')
         }
     ];
     
