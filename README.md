@@ -11,9 +11,11 @@ A powerful Node.js library and command-line tool that automatically converts HTM
 ## 🌟 Features
 
 - **Automatic Conversion**: Convert any HTML file to PowerPoint with a single command
-- **Text Boxes**: Preserves text content with styling (colors, fonts, sizes, alignment)
+- **Text Boxes**: Preserves text content with styling (colors, fonts, sizes, alignment, character spacing)
+- **Lists Supported**: Unordered and Ordered Lists formatted accurately as PowerPoint bullet points
 - **Positioned Elements**: Handles absolute, relative, and flex-based positioning (including flexbox columns with gaps!)
-- **Images**: Converts HTML images to PowerPoint images
+- **Custom PPTX Layouts**: Configurable layout sizes extending default 16:9 (`LAYOUT_16x10`, `LAYOUT_4x3`, `LAYOUT_WIDE`)
+- **Images**: Converts HTML `<img>` elements automatically to positioned PowerPoint images
 - **SVG Support**: Converts SVG shapes, lines, and text to PowerPoint elements
 - **Complex Layouts**: Supports multi-column, flexbox, and grid layouts
 - **CSS Styling**: Extracts and applies inline styles, style tags, and class-based styles
@@ -154,6 +156,13 @@ converter.convert('input.html', 'output.pptx')
 
 ### Transforms
 - `transform: rotate(…)` - Rotates elements
+
+## 📋 To-Do List (Future Improvements)
+
+- **Advanced Table Generation**: Support parsing deeply nested HTML tables and data attributes to generate rich PptxGenJS Tables and native PowerPoint Charts.
+- **Background Images**: Expand CSS parsing to include background images (`url()`) applied directly to slide bounds instead of falling back to flat colors.
+- **Animations & Transitions**: Parse specific CSS animation classes to assign native PowerPoint slide transitions or entrance animations.
+- **Advanced Grid CSS**: Better approximations for complex and auto-flow CSS Grid layouts natively matching HTML structures.
 
 ## 🎯 How It Works
 
