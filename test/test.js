@@ -1,10 +1,15 @@
 const { convertHTML2PPTX } = require('../lib/html2pptx');
+const { runSecurityTests } = require('./security.test');
 const path = require('path');
 const fs = require('fs');
 
 async function runTests() {
     console.log('🧪 Running HTML2PPTX Tests\n');
     
+    // Run security tests first
+    await runSecurityTests();
+    console.log('\n');
+
     // Create output directory
     const outputDir = path.join(__dirname, 'output');
     if (!fs.existsSync(outputDir)) {
