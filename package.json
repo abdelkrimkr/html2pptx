@@ -7,7 +7,7 @@
     "html2pptx": "./bin/html2pptx"
   },
   "scripts": {
-    "test": "node test/test.js"
+    "test": "node test/unit.js && node test/test.js"
   },
   "keywords": [
     "html",
