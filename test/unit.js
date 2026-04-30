@@ -19,6 +19,16 @@ if (!functionMatch) {
 const functionBody = functionMatch[1];
 const extractedParseBorderStyle = new Function('borderStyle', functionBody);
 
+// Extract the extractColorFromBorder function body from the source file
+const extractColorMatch = content.match(/extractColorFromBorder\(border\) \{([\s\S]*?)\n    \}/);
+if (!extractColorMatch) {
+    console.error('Could not find extractColorFromBorder function in source file');
+    process.exit(1);
+}
+
+const extractColorBody = extractColorMatch[1];
+const extractedExtractColorFromBorder = new Function('border', extractColorBody);
+
 function testParseBorderStyle() {
     console.log('🧪 Testing parseBorderStyle (extracted from source)...');
 
@@ -61,7 +71,46 @@ function testParseBorderStyle() {
     return failed;
 }
 
-const totalFailed = testParseBorderStyle();
+function testExtractColorFromBorder() {
+    console.log('🧪 Testing extractColorFromBorder (extracted from source)...');
+
+    const testCases = [
+        { input: null, expected: '#000000', desc: 'null input' },
+        { input: undefined, expected: '#000000', desc: 'undefined input' },
+        { input: '', expected: '#000000', desc: 'empty string' },
+        { input: '1px solid #FF0000', expected: '#FF0000', desc: 'hex color' },
+        { input: '2px dashed rgb(255,0,0)', expected: 'rgb(255,0,0)', desc: 'rgb color without spaces' },
+        { input: '1px solid red', expected: 'red', desc: 'named color red' },
+        { input: '2px dotted blue', expected: 'blue', desc: 'named color blue' },
+        { input: '1px solid', expected: '#000000', desc: 'no color (fallback to #000000)' },
+        { input: 'unknown style', expected: '#000000', desc: 'unknown color (fallback to #000000)' },
+        { input: 'red 1px solid', expected: 'red', desc: 'color first' },
+        { input: 'solid #00FF00 2px', expected: '#00FF00', desc: 'color middle' }
+    ];
+
+    let passed = 0;
+    let failed = 0;
+
+    testCases.forEach(tc => {
+        try {
+            const result = extractedExtractColorFromBorder(tc.input);
+            if (result !== tc.expected) {
+                throw new Error(`expected ${tc.expected}, got ${result}`);
+            }
+            console.log(`  ✅ ${tc.desc}`);
+            passed++;
+        } catch (err) {
+            console.log(`  ❌ ${tc.desc}: ${err.message}`);
+            failed++;
+        }
+    });
+
+    console.log(`\nResults: ${passed} passed, ${failed} failed\n`);
+    return failed;
+}
+
+let totalFailed = testParseBorderStyle();
+totalFailed += testExtractColorFromBorder();
 
 if (totalFailed > 0) {
     process.exit(1);
