@@ -1,5 +1,6 @@
 const { convertHTML2PPTX } = require('../lib/html2pptx');
 const { runSecurityTests } = require('./security.test');
+const { runFixerTests } = require('./pptx-fixer.test');
 const path = require('path');
 const fs = require('fs');
 
@@ -8,6 +9,10 @@ async function runTests() {
     
     // Run security tests first
     await runSecurityTests();
+    console.log('\n');
+
+    // Run PPTX fixer tests
+    await runFixerTests();
     console.log('\n');
 
     // Create output directory
