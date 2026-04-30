@@ -61,7 +61,58 @@ function testParseBorderStyle() {
     return failed;
 }
 
-const totalFailed = testParseBorderStyle();
+function testParsePixelValue() {
+    console.log('🧪 Testing parsePixelValue (extracted from source)...');
+
+    const match = content.match(/parsePixelValue\(value\) \{([\s\S]*?)\n    \}/);
+    if (!match) {
+        console.error('Could not find parsePixelValue function in source file');
+        return 1;
+    }
+    const fn = new Function('value', match[1]);
+    const mockContext = { options: { htmlWidth: 1280, htmlHeight: 720 } };
+
+    const testCases = [
+        { input: null, expected: 0, desc: 'null input' },
+        { input: undefined, expected: 0, desc: 'undefined input' },
+        { input: '', expected: 0, desc: 'empty string' },
+        { input: 'abc', expected: 0, desc: 'invalid string' },
+        { input: '10', expected: 10, desc: 'number string without unit' },
+        { input: 20, expected: 20, desc: 'number without unit' },
+        { input: '100px', expected: 100, desc: 'px unit' },
+        { input: '50%', expected: 640, desc: '% unit (relative to htmlWidth 1280)' },
+        { input: '2em', expected: 32, desc: 'em unit (1em = 16px)' },
+        { input: '1.5rem', expected: 24, desc: 'rem unit (1rem = 16px)' },
+        { input: '10pt', expected: 13.33, desc: 'pt unit (1pt = 1.333px)' },
+        { input: '50vh', expected: 360, desc: 'vh unit (relative to htmlHeight 720)' },
+        { input: '25vw', expected: 320, desc: 'vw unit (relative to htmlWidth 1280)' },
+    ];
+
+    let passed = 0;
+    let failed = 0;
+
+    testCases.forEach(tc => {
+        try {
+            const result = fn.call(mockContext, tc.input);
+            // using Math.abs to handle floating point precision issues for pt
+            if (Math.abs(result - tc.expected) > 0.001) {
+                throw new Error(`expected ${tc.expected}, got ${result}`);
+            }
+            console.log(`  ✅ ${tc.desc}`);
+            passed++;
+        } catch (err) {
+            console.log(`  ❌ ${tc.desc}: ${err.message}`);
+            failed++;
+        }
+    });
+
+    console.log(`\nResults: ${passed} passed, ${failed} failed\n`);
+    return failed;
+}
+
+let totalFailed = 0;
+totalFailed += testParseBorderStyle();
+totalFailed += testParsePixelValue();
 
 if (totalFailed > 0) {
     process.exit(1);
