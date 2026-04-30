@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Education Presentation</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #f4f7f6; }
+        .slide {
+            width: 1280px;
+            height: 720px;
+            background: white;
+            padding: 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid #ddd;
+            margin: 20px auto;
+            position: relative;
+            overflow: hidden;
+        }
+        .slide-title { font-size: 54px; color: #2c3e50; margin-bottom: 20px; text-align: center; font-weight: 300; }
+        .slide-subtitle { font-size: 28px; color: #7f8c8d; margin-bottom: 40px; text-align: center; }
+        .content-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; width: 100%; margin-top: 20px; }
+        .card { background: #fff; border-left: 5px solid #3498db; padding: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        .card h3 { font-size: 24px; color: #2980b9; margin-bottom: 10px; }
+        .card p { font-size: 18px; color: #34495e; line-height: 1.5; }
+        .accent { position: absolute; width: 300px; height: 300px; background: rgba(52, 152, 219, 0.05); border-radius: 50%; top: -100px; right: -100px; }
+    </style>
+</head>
+<body>
+    <!-- Slide 1: Title -->
+    <div class="slide">
+        <div class="accent"></div>
+        <h1 class="slide-title">Modern Education</h1>
+        <p class="slide-subtitle">Exploring the Future of Learning</p>
+    </div>
+
+    <!-- Slide 2: Key Concepts -->
+    <div class="slide">
+        <h2 class="slide-title">Core Pillars</h2>
+        <div class="content-grid">
+            <div class="card">
+                <h3>Innovation</h3>
+                <p>Embracing new technologies and methodologies to enhance the learning experience.</p>
+            </div>
+            <div class="card">
+                <h3>Collaboration</h3>
+                <p>Building strong communities and fostering peer-to-peer knowledge sharing.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 3: Technology -->
+    <div class="slide">
+        <h2 class="slide-title">Digital Integration</h2>
+        <div class="content-grid">
+            <div class="card" style="border-left-color: #2ecc71;">
+                <h3>Accessibility</h3>
+                <p>Making quality education available to everyone, everywhere, at any time.</p>
+            </div>
+            <div class="card" style="border-left-color: #f1c40f;">
+                <h3>Engagement</h3>
+                <p>Interactive tools that make learning more effective and enjoyable.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Slide 4: Conclusion -->
+    <div class="slide">
+        <div class="accent" style="bottom: -100px; left: -100px; top: auto; right: auto;"></div>
+        <h1 class="slide-title">The Path Ahead</h1>
+        <p class="slide-subtitle">Continuous growth through lifelong learning.</p>
+        <p style="font-size: 20px; color: #7f8c8d;">Thank you for your attention!</p>
+    </div>
+</body>
+</html>
