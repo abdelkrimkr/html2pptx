@@ -19,6 +19,15 @@ if (!functionMatch) {
 const functionBody = functionMatch[1];
 const extractedParseBorderStyle = new Function('borderStyle', functionBody);
 
+// Extract the parseBorderWidth function body from the source file
+const widthFunctionMatch = content.match(/parseBorderWidth\(borderWidth\) \{([\s\S]*?)\n    \}/);
+if (!widthFunctionMatch) {
+    console.error('Could not find parseBorderWidth function in source file');
+    process.exit(1);
+}
+const widthFunctionBody = widthFunctionMatch[1];
+const extractedParseBorderWidth = new Function('borderWidth', widthFunctionBody);
+
 function testParseBorderStyle() {
     console.log('🧪 Testing parseBorderStyle (extracted from source)...');
 
