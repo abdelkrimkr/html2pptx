@@ -70,23 +70,31 @@ function testParseBorderStyle() {
     return failed;
 }
 
-let totalFailed = testParseBorderStyle();
+function testParsePixelValue() {
+    console.log('🧪 Testing parsePixelValue (extracted from source)...');
 
-function testParseBorderWidth() {
-    console.log('🧪 Testing parseBorderWidth (extracted from source)...');
+    const match = content.match(/parsePixelValue\(value\) \{([\s\S]*?)\n    \}/);
+    if (!match) {
+        console.error('Could not find parsePixelValue function in source file');
+        return 1;
+    }
+    const fn = new Function('value', match[1]);
+    const mockContext = { options: { htmlWidth: 1280, htmlHeight: 720 } };
 
     const testCases = [
-        { input: null, expected: 1, desc: 'null input' },
-        { input: undefined, expected: 1, desc: 'undefined input' },
-        { input: '', expected: 1, desc: 'empty string' },
-        { input: '1px', expected: 1, desc: '1px' },
-        { input: '2', expected: 2, desc: '2' },
-        { input: '1.5em', expected: 1.5, desc: '1.5em' },
-        { input: 'thin', expected: 1, desc: 'non-numeric thin' },
-        { input: 'thick', expected: 1, desc: 'non-numeric thick' },
-        { input: 3, expected: 3, desc: 'number 3' },
-        { input: 0, expected: 0, desc: 'number 0' },
-        { input: '0px', expected: 0, desc: '0px' },
+        { input: null, expected: 0, desc: 'null input' },
+        { input: undefined, expected: 0, desc: 'undefined input' },
+        { input: '', expected: 0, desc: 'empty string' },
+        { input: 'abc', expected: 0, desc: 'invalid string' },
+        { input: '10', expected: 10, desc: 'number string without unit' },
+        { input: 20, expected: 20, desc: 'number without unit' },
+        { input: '100px', expected: 100, desc: 'px unit' },
+        { input: '50%', expected: 640, desc: '% unit (relative to htmlWidth 1280)' },
+        { input: '2em', expected: 32, desc: 'em unit (1em = 16px)' },
+        { input: '1.5rem', expected: 24, desc: 'rem unit (1rem = 16px)' },
+        { input: '10pt', expected: 13.33, desc: 'pt unit (1pt = 1.333px)' },
+        { input: '50vh', expected: 360, desc: 'vh unit (relative to htmlHeight 720)' },
+        { input: '25vw', expected: 320, desc: 'vw unit (relative to htmlWidth 1280)' },
     ];
 
     let passed = 0;
@@ -94,8 +102,9 @@ function testParseBorderWidth() {
 
     testCases.forEach(tc => {
         try {
-            const result = extractedParseBorderWidth(tc.input);
-            if (result !== tc.expected) {
+            const result = fn.call(mockContext, tc.input);
+            // using Math.abs to handle floating point precision issues for pt
+            if (Math.abs(result - tc.expected) > 0.001) {
                 throw new Error(`expected ${tc.expected}, got ${result}`);
             }
             console.log(`  ✅ ${tc.desc}`);
@@ -110,7 +119,9 @@ function testParseBorderWidth() {
     return failed;
 }
 
-totalFailed += testParseBorderWidth();
+let totalFailed = 0;
+totalFailed += testParseBorderStyle();
+totalFailed += testParsePixelValue();
 
 if (totalFailed > 0) {
     process.exit(1);
